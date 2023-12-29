@@ -1,7 +1,7 @@
 from enum import Enum
 from time import perf_counter
 
-from amas.agent import Agent, NotWorkingError, Observer
+from amas.agent import Agent, NotWorkingError
 from amas.agent import Observer as __Observer
 from pyno.ino import ArduinoLineReader
 
@@ -16,7 +16,7 @@ class AgentAddress(Enum):
     RECORDER = "RECORDER"
 
 
-async def __observe(agent: Observer):
+async def __observe(agent: __Observer):
     from utex.shceduler import SessionMarker
 
     while agent.working():
