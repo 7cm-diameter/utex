@@ -30,6 +30,19 @@ def blockwise_shuffle(x: list, blocksize: int) -> list:
     return ret
 
 
+def mix(x: list, y: list, px: int, py: int):
+    return x * px + y * py
+
+
+def repeat(x, times: int = 0, each: int = 0) -> list:
+    if each > 0:
+        return [i for i in x for _ in range(each)]
+    ret = [x for _ in range(times)]
+    if type(ret[0]) == list:
+        return sum(ret, [])
+    return ret
+
+
 class TrialIterator(object):
     from typing import Sequence
 
