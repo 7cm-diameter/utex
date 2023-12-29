@@ -10,6 +10,7 @@ python = "^3.10"
 pyno = {git = "https://github.com/7cm-diameter/pyno.git"}
 amas = {git = "https://github.com/7cm-diameter/amas.git"}
 numpy = "^1.26.2"
+sounddevice = "^0.4.6"
 
 
 [tool.poetry.group.dev.dependencies]
