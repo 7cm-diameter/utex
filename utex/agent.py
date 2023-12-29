@@ -11,7 +11,7 @@ class AgentAddress(Enum):
 
     from amas.agent import OBSERVER as _OBSERVER
 
-    ONSERVER = _OBSERVER
+    OBSERVER = _OBSERVER
     READER = "READER"
     RECORDER = "RECORDER"
 
