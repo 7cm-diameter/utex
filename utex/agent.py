@@ -55,27 +55,21 @@ async def read(agent: Agent, ino: ArduinoLineReader):
 
 
 async def record(agent: Agent, filename: str, timing: bool = False):
-    lines: list[str] = []
     try:
-        if timing:
-            while agent.working():
-                _, mess = await agent.recv()
-                l = f"{perf_counter()}, {mess}"
-                print(l)
-                lines.append(l)
-        else:
-            while agent.working():
-                _, mess = await agent.recv()
-                print(mess)
-                lines.append(mess)
+        with open(filename, "w") as f:
+            if timing:
+                while agent.working():
+                    _, mess = await agent.recv()
+                    l = f"{perf_counter()}, {mess}"
+                    print(l)
+                    f.write(l)
+            else:
+                while agent.working():
+                    _, mess = await agent.recv()
+                    print(mess)
+                    f.write(mess)
     except NotWorkingError:
         pass
-
-    with open(filename, "w") as f:
-        if timing:
-            f.write("time, event\n")
-        for line in lines:
-            f.write(line)
 
 
 class Observer(_Observer):
