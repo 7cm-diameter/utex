@@ -34,7 +34,7 @@ class PinoClap(object):
         self.__parser.add_argument(
             "--yaml", "-y", help="Path to yaml for the experiment.", type=str
         )
-        self.__args = self.__parser.yaml
+        self.__args = self.__parser.parse_args()
 
     def config(self) -> Config:
         return Config(self.__args.yaml)
