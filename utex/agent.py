@@ -60,14 +60,14 @@ async def record(agent: Agent, filename: str, timing: bool = False):
             if timing:
                 while agent.working():
                     _, mess = await agent.recv()
-                    l = f"{perf_counter()}, {mess}"
+                    l = f"{perf_counter()}, {mess}\n"
                     print(l)
                     f.write(l)
             else:
                 while agent.working():
                     _, mess = await agent.recv()
                     print(mess)
-                    f.write(mess)
+                    f.write(f"{mess}\n")
     except NotWorkingError:
         pass
 
