@@ -2,7 +2,7 @@ from enum import Enum
 from time import perf_counter
 
 from amas.agent import Agent, NotWorkingError
-from amas.agent import Observer as __Observer
+from amas.agent import Observer as _Observer
 from pyno.ino import ArduinoLineReader
 
 
@@ -16,7 +16,7 @@ class AgentAddress(Enum):
     RECORDER = "RECORDER"
 
 
-async def __observe(agent: __Observer):
+async def _observe(agent: _Observer):
     from utex.shceduler import SessionMarker
 
     while agent.working():
@@ -78,11 +78,11 @@ async def record(agent: Agent, filename: str, timing: bool = False):
             f.write(line)
 
 
-class Observer(__Observer):
+class Observer(_Observer):
     def __init__(self):
         """docstring for __init__"""
         super().__init__()
-        self.assign_task(__observe)
+        self.assign_task(_observe)
 
 
 class Reader(Agent):
