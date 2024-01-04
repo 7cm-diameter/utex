@@ -11,6 +11,7 @@ pyno = {git = "https://github.com/7cm-diameter/pyno.git"}
 amas = {git = "https://github.com/7cm-diameter/amas.git"}
 numpy = "^1.26.2"
 sounddevice = "^0.4.6"
+pyyaml = "^6.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
