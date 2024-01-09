@@ -30,6 +30,33 @@ def blockwise_shuffle(x: list, blocksize: int) -> list:
     return ret
 
 
+def blockwise_shuffle2(x1: list, x2: list, blocksize: int) -> tuple[list, list]:
+    from numpy.random import choice
+
+    l1 = len(x1)
+    l2 = len(x2)
+    if l1 != l2:
+        raise ValueError("`x1` and `x2` must be the same length")
+
+    if not l1 % blocksize == 0:
+        raise ValueError("`x` must be dividable by `blocksize`")
+
+    offsets = list(range(0, l1 + 1, blocksize))
+    ret1: list = []
+    ret2: list = []
+    for i in range(l1 // blocksize):
+        onset = offsets[i]
+        offset = offsets[i + 1]
+        _x1 = x1[onset:offset]
+        _x2 = x2[onset:offset]
+        _sn = choice(len(_x1), size=len(_x1), replace=False)
+        _x1 = [_x1[i] for i in _sn]
+        _x2 = [_x2[i] for i in _sn]
+        ret1.extend(_x1)
+        ret2.extend(_x2)
+    return ret1, ret2
+
+
 def mix(x: list, y: list, px: int, py: int):
     return x * px + y * py
 
