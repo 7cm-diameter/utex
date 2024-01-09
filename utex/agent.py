@@ -17,7 +17,7 @@ class AgentAddress(Enum):
 
 
 async def _observe(agent: _Observer):
-    from utex.shceduler import SessionMarker
+    from utex.scheduler import SessionMarker
 
     while agent.working():
         _, mess = await agent.recv()
@@ -29,7 +29,7 @@ async def _observe(agent: _Observer):
 
 
 async def self_terminate(agent: Agent, **kwargs) -> None:
-    from utex.shceduler import SessionMarker
+    from utex.scheduler import SessionMarker
 
     try:
         while agent.working():
