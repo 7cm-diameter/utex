@@ -14,6 +14,7 @@ class AgentAddress(Enum):
     OBSERVER = _OBSERVER
     READER = "READER"
     RECORDER = "RECORDER"
+    CONTROLLER = "CONTROLLER"
 
 
 async def _observe(agent: _Observer):
