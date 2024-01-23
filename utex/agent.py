@@ -61,7 +61,8 @@ async def record(agent: Agent, filename: str, timing: bool = False):
             if timing:
                 while agent.working():
                     _, mess = await agent.recv()
-                    l = f"{perf_counter()}, {mess}\n"
+                    t, e = mess
+                    l = f"{t}, {e}\n"
                     print(l)
                     f.write(l)
             else:
