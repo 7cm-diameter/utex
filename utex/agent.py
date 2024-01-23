@@ -62,9 +62,9 @@ async def record(agent: Agent, filename: str, timing: bool = False):
                 while agent.working():
                     _, mess = await agent.recv()
                     t, e = mess
-                    l = f"{t}, {e}\n"
+                    l = f"{t}, {e}"
                     print(l)
-                    f.write(l)
+                    f.write(l+"\n")
             else:
                 while agent.working():
                     _, mess = await agent.recv()
