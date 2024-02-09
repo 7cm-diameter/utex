@@ -59,14 +59,10 @@ def blockwise_shuffle2(x1: list, x2: list, blocksize: int) -> tuple[list, list]:
 x = tuple([[1, 2, 3, 4], [2, 3, 4, 5]])
 
 def blockwise_shufflen(blocksize: int, *args):
-    from functools import reduce
-    from operator import eq
-
     from numpy.random import choice
 
     lens = list(map(len, args))
-    print(reduce(eq, lens))
-    if not reduce(eq, lens):
+    if not all(lens):
         raise ValueError("`x1` and `x2` must be the same length")
 
     if not lens[0] % blocksize == 0:
