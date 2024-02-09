@@ -56,7 +56,6 @@ def blockwise_shuffle2(x1: list, x2: list, blocksize: int) -> tuple[list, list]:
         ret2.extend(_x2)
     return ret1, ret2
 
-x = tuple([[1, 2, 3, 4], [2, 3, 4, 5]])
 
 def blockwise_shufflen(blocksize: int, *args):
     from numpy.random import choice
