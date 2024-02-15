@@ -16,7 +16,7 @@ def elementwise_shuffle(x: list) -> list:
 
 
 def blockwise_shuffle(x: list, blocksize: int) -> list:
-    from numpy.random import choice
+    from numpy.random import shuffle
 
     length = len(x)
     if not length % blocksize == 0:
@@ -25,7 +25,7 @@ def blockwise_shuffle(x: list, blocksize: int) -> list:
     ret: list = []
     for i in range(length // blocksize):
         _x = x[offsets[i] : offsets[i + 1]]
-        _x = choice(_x, size=len(_x), replace=False)
+        shuffle(_x)
         ret.extend(_x)
     return ret
 
