@@ -88,6 +88,10 @@ def mix(x: list, y: list, px: int, py: int):
     return x * px + y * py
 
 
+def mixn(xs: list[list], ps: list):
+    return sum([xs[i] * ps[i] for i in range(len(xs))], [])
+
+
 def repeat(x, times: int = 0, each: int = 0) -> list:
     if each > 0:
         return [i for i in x for _ in range(each)]
